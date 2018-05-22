@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Fields.AthleticFieldListItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel BorderBrush="CadetBlue" BorderThickness="2" Background="Bisque" 
+                   HorizontalAlignment="Stretch" Padding="5" Margin="10" Width="250">
+        <TextBlock x:Name="FieldName" 
+                   Text="{Binding Name}" 
+                   FontSize="24"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignTopWithPanel="True"/>
+
+        <TextBlock x:Name="FieldWorkingHours" 
+                   FontSize="20"
+                   RelativePanel.AlignBottomWithPanel="True"
+                   RelativePanel.Below="FieldName"
+                   RelativePanel.AlignLeftWithPanel="True">
+            Work: <Run Text="{Binding StartsWorkingTime}"/> - <Run Text="{Binding EndsWorkingTime}"/>
+        </TextBlock>
+
+        <!--<TextBlock x:Name="FieldPrice" 
+                   FontSize="20"
+                   RelativePanel.AlignBottomWithPanel="True"
+                   RelativePanel.RightOf="FieldWorkingHours">
+            Price: <Run Foreground="OrangeRed" Text="{Binding PricePerParticipant}"/>
+        </TextBlock>-->
+    </RelativePanel>
+</Page>

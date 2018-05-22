@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Drones.UserDronesListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:reservation="using:DronZone_UWP.Presentation.Views.Reservation"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    xmlns:area="using:DronZone_UWP.Presentation.Views.Area"
+    xmlns:drones="using:DronZone_UWP.Presentation.Views.Drones"
+    mc:Ignorable="d">
+
+
+    <Page.Resources>
+        <DataTemplate x:Key="DroneListItemControl">
+            <drones:DroneListItemControl />
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Column="1" Grid.Row="1">
+                <StackPanel >
+                    <TextBlock FontSize="34">
+                        Your Drones
+                    </TextBlock>
+
+                    <ListView x:Name="DroneListView"
+                              SelectionMode="Single"
+                              ItemTemplate="{StaticResource DroneListItemControl}" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <controls:Loading x:Name="Preloader"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <preloader:PreloaderContent />
+        </controls:Loading>
+    </Grid>
+</Page>

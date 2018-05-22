@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Devices.LinkDevicePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:common="using:Sportorent_UWP.Presentation.Views.Common"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="1"
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"
+                          Padding="20">
+                <StackPanel>
+                    <TextBlock FontSize="40">
+                        Link Device
+                    </TextBlock>
+
+                    <StackPanel
+                        HorizontalAlignment="Stretch">
+                        <ComboBox x:Name="KindsOfSportComboBox"
+                                  Header="Sport"
+                                  HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate></ComboBox>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <ComboBox x:Name="FieldComboBox"
+                                  Header="Field"
+                                  HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock x:Name="FieldComboBoxError"
+                                   FontSize="21"
+                                   Foreground="OrangeRed"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <ComboBox x:Name="DeviceIdComboBox"
+                                  Header="Device"
+                                  HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Text="{Binding Id}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock x:Name="DeviceIdError"
+                                   FontSize="21"
+                                   Foreground="OrangeRed"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="SubmitButton" 
+                                    Margin="0,20,0,20"
+                                    Background="CadetBlue">
+                            Submit
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <controls:Loading x:Name="Preloader"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <preloader:PreloaderContent />
+        </controls:Loading>
+    </Grid>
+</Page>

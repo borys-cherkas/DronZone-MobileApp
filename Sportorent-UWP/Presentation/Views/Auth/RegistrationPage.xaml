@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Auth.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <ScrollViewer>
+            <StackPanel HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Padding="20"
+                        Width="400">
+
+                <TextBlock FontSize="34">Registration</TextBlock>
+
+                <TextBox x:Name="EmailTextBox"
+                         Header="Email"
+                         Margin="0,10,0,10"
+                         PlaceholderText="Enter your email" />
+
+                <PasswordBox x:Name="PasswordBox"
+                             Header="Password"
+                             Margin="0,10,0,10"
+                             PlaceholderText="Enter your password" />
+
+
+                <TextBox x:Name="FirstNameTextBox"
+                         Header="First Name"
+                         Margin="0,10,0,10"
+                         PlaceholderText="Enter your first name" />
+
+                <TextBox x:Name="LastNameTextBox"
+                         Header="Last Name"
+                         Margin="0,10,0,10"
+                         PlaceholderText="Enter your last name" />
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="RegisterButton" 
+                            Margin="0,20,0,20"
+                            Background="CadetBlue">
+                        Register
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <controls:Loading x:Name="Preloader"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.RowSpan="3">
+            <preloader:PreloaderContent />
+        </controls:Loading>
+    </Grid>
+</Page>

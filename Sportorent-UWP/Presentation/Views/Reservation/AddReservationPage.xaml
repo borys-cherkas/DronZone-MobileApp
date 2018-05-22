@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Reservation.AddReservationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:common="using:Sportorent_UWP.Presentation.Views.Common"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Grid.Column="1"
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center">
+                <StackPanel MaxWidth="350">
+                    <TextBlock FontSize="28">
+                        Add New Reservation
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="24">Field:</TextBlock>
+                        <TextBlock FontSize="24" x:Name="FieldNameTextBlock"/>
+                    </StackPanel>
+
+                    <TextBlock FontSize="21" TextWrapping="Wrap">Reserved:</TextBlock>
+                    <ItemsControl x:Name="ReservedTimeItemsControl">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="21" TextWrapping="Wrap">
+                                        <Run Text="{Binding ReservationDateFormatted}"/> 
+                                        -> <Run Text="{Binding ReservationStartsTime}" Foreground="Red"/> 
+                                        - <Run Text="{Binding ReservationEndsTime}" Foreground="Red"/></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <CalendarDatePicker x:Name="GameDateCalendarPicker"
+                                        IsTodayHighlighted="True"
+                                        DisplayMode="Month"
+                                        Header="Game Date"/>
+
+                    <StackPanel>
+                        <TimePicker x:Name="GameStartsTimePicker"
+                                    Header="Game Starts At"
+                                    ClockIdentifier="24HourClock" />
+
+                        <TextBlock x:Name="GameStartsErrorTextBlock"
+                                   FontSize="21"
+                                   Foreground="OrangeRed"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TimePicker x:Name="GameEndsTimePicker"
+                                    Header="Game Ends At"/>
+
+                        <TextBlock x:Name="GameEndsErrorTextBlock"
+                                   FontSize="21"
+                                   Foreground="OrangeRed"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="AddReservationButton" 
+                                    Margin="0,20,0,20"
+                                    Background="CadetBlue">
+                            Add Reservation
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <controls:Loading x:Name="Preloader"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <preloader:PreloaderContent />
+        </controls:Loading>
+    </Grid>
+</Page>
