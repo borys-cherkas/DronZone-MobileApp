@@ -96,6 +96,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Business\Services\IAreaFilterService.cs" />
+    <Compile Include="Business\Services\Implementations\AreaFilterService.cs" />
     <Compile Include="Business\Services\Implementations\AreaService.cs" />
     <Compile Include="Business\Services\IAreaService.cs" />
     <Compile Include="Business\Services\IDroneService.cs" />
@@ -108,20 +110,16 @@
     <Compile Include="Business\Services\INetworkService.cs" />
     <Compile Include="Business\Services\IPreferencesService.cs" />
     <Compile Include="Constants\RolesConstants.cs" />
+    <Compile Include="Data\Api\APIs\IFilterRestApi.cs" />
+    <Compile Include="Data\Api\APIs\Implementations\FilterRestApi.cs" />
     <Compile Include="Data\Api\ApiUnauthorizedException.cs" />
     <Compile Include="Data\Api\ApiException.cs" />
     <Compile Include="Data\Api\ApiRouting.cs" />
-    <Compile Include="Data\Api\APIs\IBillingRestApi.cs" />
-    <Compile Include="Data\Api\APIs\Implementations\DevicesRestApi.cs" />
-    <Compile Include="Data\Api\APIs\Implementations\BillingRestApi.cs" />
     <Compile Include="Data\Api\APIs\Implementations\AreaRestApi.cs" />
-    <Compile Include="Data\Api\APIs\IDevicesRestApi.cs" />
     <Compile Include="Data\Api\APIs\IAreaRestApi.cs" />
     <Compile Include="Data\Api\APIs\IDroneRestApi.cs" />
-    <Compile Include="Data\Api\APIs\IKindsOfSportRestApi.cs" />
     <Compile Include="Data\Api\APIs\IAuthRestApi.cs" />
     <Compile Include="Data\Api\APIs\Implementations\DroneRestApi.cs" />
-    <Compile Include="Data\Api\APIs\Implementations\KindsOfSportRestApi.cs" />
     <Compile Include="Data\Api\APIs\Implementations\AuthRestApi.cs" />
     <Compile Include="Data\Api\Rest\IRequestInterceptor.cs" />
     <Compile Include="Data\Api\Rest\PostFormUrlEncodedRequestBuilder.cs" />
@@ -132,42 +130,26 @@
     <Compile Include="Enums\DroneType.cs" />
     <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Infrastructure\AutofacRegistrator.cs" />
+    <Compile Include="Models\AreaFilters\AddFilterDetailedModel.cs" />
+    <Compile Include="Models\AreaFilters\AreaFilterDetailedModel.cs" />
     <Compile Include="Models\Area\AreaDetailedModel.cs" />
     <Compile Include="Models\Area\MapRectangle.cs" />
     <Compile Include="Models\Area\ZoneSettings.cs" />
-    <Compile Include="Models\AthleticField\AthleticFieldListItemModel.cs" />
-    <Compile Include="Models\AthleticField\AthleticFieldListModel.cs" />
     <Compile Include="Models\Auth\LoginModel.cs" />
     <Compile Include="Models\Auth\GetTokenModel.cs" />
     <Compile Include="Models\Auth\RegistrationModel.cs" />
     <Compile Include="Models\Auth\UserInfoModel.cs" />
-    <Compile Include="Models\Devices\DeviceListItemModel.cs" />
-    <Compile Include="Models\Devices\DeviceListModel.cs" />
     <Compile Include="Models\Drone\DroneDetailedModel.cs" />
-    <Compile Include="Models\KindOfSport\KindOfSportListItemModel.cs" />
-    <Compile Include="Models\KindOfSport\KindOfSportListModel.cs" />
-    <Compile Include="Models\Reservation\AddParticipantToReservationModel.cs" />
-    <Compile Include="Models\Reservation\AddReservationModel.cs" />
-    <Compile Include="Models\Reservation\ReservationBillModel.cs" />
-    <Compile Include="Models\Reservation\ReservationDetailedModel.cs" />
-    <Compile Include="Models\Reservation\ReservationListItemModel.cs" />
-    <Compile Include="Models\Reservation\ReservationListModel.cs" />
-    <Compile Include="Models\Reservation\ReservationParticipantModel.cs" />
     <Compile Include="Models\ResponseWrapper.cs" />
-    <Compile Include="Models\AthleticField\AthleticFieldDetailedModel.cs" />
+    <Compile Include="Presentation\ViewModels\AreaFilters\AddFilterViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\AreaFilters\FilterDetailsViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\AreaFilters\FilterListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Area\AreaDetailsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\AthleticField\AthleticFieldDetailsViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\AthleticField\AthleticFieldListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Auth\LoginViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Auth\RegistrationViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Bookings\AddReservationViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Bookings\ReservationDetailsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Area\UserAreasListViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Devices\LinkDeviceViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Devices\DevicesListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Drone\DroneDetailsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Drone\UserDroneListViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\KindOfSport\KindOfSportListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MenuContentViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ViewModelBase.cs" />
     <Compile Include="Presentation\Views\About\AboutPage.xaml.cs">
@@ -175,6 +157,18 @@
     </Compile>
     <Compile Include="Presentation\Views\AppMenuContainer\AppMenuContainerPage.xaml.cs">
       <DependentUpon>AppMenuContainerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\AreaFilter\AddFilterPage.xaml.cs">
+      <DependentUpon>AddFilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\AreaFilter\FilterDetailsPage.xaml.cs">
+      <DependentUpon>FilterDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\AreaFilter\FilterListItemControl.xaml.cs">
+      <DependentUpon>FilterListItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\AreaFilter\AreaFilterListPage.xaml.cs">
+      <DependentUpon>AreaFilterListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\Area\AreaDetailsPage.xaml.cs">
       <DependentUpon>AreaDetailsPage.xaml</DependentUpon>
@@ -191,12 +185,6 @@
     <Compile Include="Presentation\Views\Auth\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\Devices\LinkDevicePage.xaml.cs">
-      <DependentUpon>LinkDevicePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\Devices\DeviceListItemControl.xaml.cs">
-      <DependentUpon>DeviceListItemControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Views\Drones\DroneDetailsPage.xaml.cs">
       <DependentUpon>DroneDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -206,33 +194,11 @@
     <Compile Include="Presentation\Views\Drones\UserDronesListPage.xaml.cs">
       <DependentUpon>UserDronesListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\Fields\AthleticFieldDetailsPage.xaml.cs">
-      <DependentUpon>AthleticFieldDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\Fields\AthleticFieldListItemControl.xaml.cs">
-      <DependentUpon>AthleticFieldListItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\Fields\FieldsListPage.xaml.cs">
-      <DependentUpon>FieldsListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\KindOfSport\KindOfSportListPage.xaml.cs">
-      <DependentUpon>KindOfSportListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\KindOfSport\KindOfSportListItem.xaml.cs">
-      <DependentUpon>KindOfSportListItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Views\Preloader\PreloaderContent.xaml.cs">
       <DependentUpon>PreloaderContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\Devices\DevicesListPage.xaml.cs">
-      <DependentUpon>DevicesListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\Reservation\AddReservationPage.xaml.cs">
-      <DependentUpon>AddReservationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MenuNavigationHelper.cs" />
-    <Compile Include="Utils\SortingHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -290,6 +256,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\Views\AreaFilter\AddFilterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\AreaFilter\FilterDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\AreaFilter\FilterListItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\AreaFilter\AreaFilterListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Views\Area\AreaDetailsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -310,14 +292,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\Devices\LinkDevicePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Presentation\Views\Devices\DeviceListItemControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Presentation\Views\Drones\DroneDetailsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -330,35 +304,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Presentation\Views\Fields\AthleticFieldDetailsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\Fields\AthleticFieldListItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\Fields\FieldsListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\KindOfSport\KindOfSportListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\KindOfSport\KindOfSportListItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Presentation\Views\Preloader\PreloaderContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\Devices\DevicesListPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Presentation\Views\Reservation\AddReservationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

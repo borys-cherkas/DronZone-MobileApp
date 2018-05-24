@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.AreaFilter.FilterDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ScrollViewer Grid.Column="1" Grid.Row="1">
+                    <StackPanel >
+                        <TextBlock FontSize="34">
+                            Your Areas
+                        </TextBlock>
+
+
+                        <StackPanel Padding="20" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Drone Type: " FontWeight="Bold" FontSize="18"/>
+                                    <TextBlock x:Name="DroneTypeTextBlock" FontSize="22"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Drone Carrying Capacity: " FontWeight="Bold" FontSize="18" />
+                                    <TextBlock x:Name="MaxAvailableWeigthTextBlock" FontSize="22"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Max Drone Weigth: " FontWeight="Bold" FontSize="18" />
+                                    <TextBlock x:Name="MaxDroneWeigthTextBlock" FontSize="22" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Max Drone Speed: " FontWeight="Bold" FontSize="18" />
+                                    <TextBlock x:Name="MaxDroneSpeedTextBlock" FontSize="22" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="GoBackToAreaDetailsButton" Padding="20" Margin="15">
+                                    Go Back To Area Details
+                                </Button>
+                                <Button x:Name="GoToFilterListButton" Padding="20" Margin="15">
+                                    Go Back To Filter List
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <controls:Loading x:Name="Preloader"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <preloader:PreloaderContent />
+            </controls:Loading>
+        </Grid>
+    </Grid>
+</Page>

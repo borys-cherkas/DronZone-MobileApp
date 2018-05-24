@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using DronZone_UWP.Business.Services;
 using DronZone_UWP.Models.Area;
+using DronZone_UWP.Presentation.Views.Area;
+using DronZone_UWP.Presentation.Views.AreaFilter;
+using DronZone_UWP.Utils;
 using ReactiveUI;
 
 namespace DronZone_UWP.Presentation.ViewModels.Area
@@ -10,33 +13,40 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
     public class AreaDetailsViewModel : ViewModelBase
     {
         private readonly IAreaService _areaService;
+        private readonly MenuNavigationHelper _menuNavigationHelper;
 
-        private ReactiveCommand _goToFiltersCommand;
+        private readonly string _areaId;
 
         private AreaDetailedModel _areaDetailedModel;
 
-        public AreaDetailsViewModel(IAreaService areaService)
+        public AreaDetailsViewModel(IAreaService areaService, MenuNavigationHelper menuNavigationHelper)
         {
             _areaService = areaService;
+            _menuNavigationHelper = menuNavigationHelper;
 
-            GoToFiltersCommand = ReactiveCommand.CreateFromTask(GoToFiltersExecutedAsync);
+            _areaId = MenuContentViewModel.Param as string;
+
+            GoToFiltersCommand = ReactiveCommand.CreateFromTask(async () => GoToFiltersExecuted());
+
+            GoBackToAreaListCommand = ReactiveCommand.CreateFromTask(async () => GoBackToAreaListExecuted());
 
             Init();
         }
 
-        private Task GoToFiltersExecutedAsync()
+        private void GoToFiltersExecuted()
         {
-            return Task.CompletedTask;
+            _menuNavigationHelper.NavigateTo(typeof(AreaFilterListPage), _areaId);
+        }
+
+        private void GoBackToAreaListExecuted()
+        {
+            _menuNavigationHelper.NavigateTo(typeof(UserAreasListPage));
         }
 
         public AreaDetailedModel Area
         {
             get => _areaDetailedModel;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _areaDetailedModel, value);
-                this.RaisePropertyChanged(nameof(MapCenter));
-            }
+            set => this.RaiseAndSetIfChanged(ref _areaDetailedModel, value);
         }
 
         public Geopoint MapCenter
@@ -60,11 +70,9 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
             }
         }
 
-        public ReactiveCommand GoToFiltersCommand
-        {
-            get => _goToFiltersCommand;
-            set => this.RaiseAndSetIfChanged(ref _goToFiltersCommand, value);
-        }
+        public ReactiveCommand GoToFiltersCommand { get; }
+
+        public ReactiveCommand GoBackToAreaListCommand { get; }
 
         private async void Init()
         {
@@ -77,8 +85,7 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
 
             try
             {
-                var areaId = MenuContentViewModel.Param as string;
-                Area = await _areaService.GetDetailedAreaAsync(areaId);
+                Area = await _areaService.GetDetailedAreaAsync(_areaId);
             }
             catch (Exception ex)
             {

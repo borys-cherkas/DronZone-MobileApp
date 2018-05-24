@@ -13,47 +13,43 @@
         <Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="8*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="8*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel Padding="20" Orientation="Vertical">
-                        <TextBlock x:Name="AreaNameTextBlock" FontSize="28" FontStyle="Italic" Padding="10"/>
+                        <TextBlock x:Name="AreaNameTextBlock" FontSize="28" FontStyle="Italic" Padding="10" />
 
-                        <Button Click="mapPolygonAddButton_Click">Draw</Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="GoBackToAreaListButton" Padding="20" Margin="15">
+                                Go Back To Areas List
+                            </Button>
+                            <Button x:Name="GoToFiltersButton" Padding="20" Margin="15">
+                                Go To Area Filters
+                            </Button>
+                        </StackPanel>
 
                         <maps:MapControl x:Name="AreaMapControl"
                                          HorizontalAlignment="Stretch"
                                          Height="400"
-                                         Loaded="AreaMapControl_OnLoaded" 
+                                         Loaded="AreaMapControl_OnLoaded"
                                          Padding="10" />
                     </StackPanel>
-
-                            <!--<ListView x:Name="AreaFilterListView" Grid.Row="1">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>-->
-
                 </Grid>
             </Grid>
 

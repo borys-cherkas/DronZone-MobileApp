@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DronZone_UWP.Data.Api.Rest;
-using DronZone_UWP.Models.AthleticField;
 using DronZone_UWP.Presentation.ViewModels.Drone;
 
 namespace DronZone_UWP.Data.Api.APIs.Implementations

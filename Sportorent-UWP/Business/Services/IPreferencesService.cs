@@ -1,7 +1,7 @@
 ﻿using System;
 using DronZone_UWP.Models.Auth;
 
-namespace Sportorent_UWP.Business.Services
+namespace DronZone_UWP.Business.Services
 {
     public interface IPreferencesService
     {

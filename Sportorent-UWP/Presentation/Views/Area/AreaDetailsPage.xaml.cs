@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reactive.Linq;
 using Windows.Devices.Geolocation;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -33,19 +34,12 @@ namespace DronZone_UWP.Presentation.Views.Area
             d(this.OneWayBind(ViewModel, vm => vm.IsBusy, v => v.Preloader.IsLoading));
 
             d(this.OneWayBind(ViewModel, vm => vm.Area.Name, v => v.AreaNameTextBlock.Text));
-            d(this.OneWayBind(ViewModel, vm => vm.MapCenter, v => v.AreaMapControl.Center));
+            d(this.BindCommand(ViewModel, vm => vm.GoToFiltersCommand, v => v.GoToFiltersButton));
+            d(this.BindCommand(ViewModel, vm => vm.GoBackToAreaListCommand, v => v.GoBackToAreaListButton));
 
-            //d(this.BindCommand(ViewModel, vm => vm.PayCommand, v => v.PayButton));
-            //d(this.OneWayBind(ViewModel, vm => vm.CanPayBill, v => v.PayButton.Visibility,
-            //    canPay => canPay ? Visibility.Visible : Visibility.Collapsed));
-
-            //d(this.BindCommand(ViewModel, vm => vm.ComeInToFieldCommand, v => v.ComeInButton));
-            //d(this.OneWayBind(ViewModel, vm => vm.CanComeIn, v => v.ComeInButton.Visibility,
-            //    canCome => canCome ? Visibility.Visible : Visibility.Collapsed));
-
-            //d(this.BindCommand(ViewModel, vm => vm.ComeOutFromFieldCommand, v => v.ComeOutButton));
-            //d(this.OneWayBind(ViewModel, vm => vm.CanComeOut, v => v.ComeOutButton.Visibility,
-            //    canCome => canCome ? Visibility.Visible : Visibility.Collapsed));
+            d(ViewModel.ObservableForProperty(x => x.Area)
+                .Where(x => x != null)
+                .Subscribe(UpdateMapArea));
         }
 
         private void AreaMapControl_OnLoaded(object sender, RoutedEventArgs e)
@@ -55,13 +49,14 @@ namespace DronZone_UWP.Presentation.Views.Area
             AreaMapControl.MapProjection = MapProjection.WebMercator;
             AreaMapControl.StyleSheet = MapStyleSheet.RoadLight();
         }
-
-        /// <summary>
-        /// This method will draw a blue rectangle around the center of the map
-        /// </summary>
-        private void mapPolygonAddButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        
+        private void UpdateMapArea(object _ = null)
         {
-            var map = ViewModel?.Area?.MapRectangle;
+            AreaMapControl.MapElements.Clear();
+
+            AreaMapControl.Center = ViewModel.MapCenter;
+
+            var map = ViewModel.Area.MapRectangle;
             var leftTop = new BasicGeoposition() { Latitude = map.South, Longitude = map.West};
             var leftBottom = new BasicGeoposition() { Latitude = map.South, Longitude = map.East };
             var rightTop = new BasicGeoposition() { Latitude = map.North, Longitude = map.West };

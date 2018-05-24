@@ -3,14 +3,13 @@ using System.Linq;
 using System.Reactive.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using DronZone_UWP.Business.Services;
 using DronZone_UWP.Constants;
 using DronZone_UWP.Presentation.Views.Area;
 using DronZone_UWP.Presentation.Views.Auth;
-using DronZone_UWP.Presentation.Views.Devices;
 using DronZone_UWP.Presentation.Views.Drones;
 using DronZone_UWP.Utils;
 using ReactiveUI;
-using Sportorent_UWP.Business.Services;
 
 namespace DronZone_UWP.Presentation.ViewModels
 {
@@ -120,11 +119,12 @@ namespace DronZone_UWP.Presentation.ViewModels
 
             if (userRole == RolesConstants.Administrator)
             {
+                //TODO: Remove
                 MenuItems.Add(new MenuItemViewModel
                 {
-                    DisplayName = "Generate Drones",
+                    DisplayName = "My Drones",
                     Icon = "\xE728",
-                    PageType = typeof(DevicesListPage)
+                    PageType = typeof(UserDronesListPage)
                 });
             }
 

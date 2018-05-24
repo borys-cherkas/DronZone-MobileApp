@@ -23,7 +23,7 @@ namespace DronZone_UWP.Presentation.ViewModels.Auth
 
             LoginModel = new LoginModel
             {
-                Username = "admin1@test.com",
+                Username = "user1@test.com",
                 Password = "Test123!",
                 RememberMe = true
             };

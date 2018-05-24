@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Autofac;
+using DronZone_UWP.Business.Services;
 using DronZone_UWP.Infrastructure;
 using DronZone_UWP.Presentation.Views.AppMenuContainer;
 using DronZone_UWP.Presentation.Views.Auth;

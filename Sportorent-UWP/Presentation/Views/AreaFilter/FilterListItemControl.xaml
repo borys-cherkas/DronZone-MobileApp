@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.AreaFilter.FilterListItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Width="350"
+          Height="100"
+          BorderBrush="CadetBlue" BorderThickness="2" 
+          Padding="15"
+          Background="Bisque" >
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Drone Type: " FontWeight="Bold" FontSize="18"/>
+                <TextBlock Text="{Binding DroneTypePresentation}" FontSize="22"/>
+            </StackPanel>
+
+            <!--<StackPanel Orientation="Vertical">
+                <TextBlock Text="Drone Carrying Capacity: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding MaxAvailableWeigth}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Max Drone Weigth: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding MaxDroneWeigth}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Max Drone Speed: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding MaxDroneSpeed}"/>
+            </StackPanel>-->
+        </StackPanel>
+    </Grid>
+</Page>

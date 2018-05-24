@@ -3,7 +3,6 @@ using System.Linq;
 using Windows.Storage;
 using DronZone_UWP.Models.Auth;
 using Newtonsoft.Json;
-using Sportorent_UWP.Business.Services;
 
 namespace DronZone_UWP.Business.Services.Implementations
 {

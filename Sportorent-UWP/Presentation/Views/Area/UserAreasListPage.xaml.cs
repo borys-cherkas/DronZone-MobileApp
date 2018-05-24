@@ -1,10 +1,7 @@
 ﻿using System;
-using Windows.Devices.Geolocation;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls.Maps;
 using Autofac;
 using DronZone_UWP.Presentation.ViewModels.Area;
-using DronZone_UWP.Presentation.ViewModels.Drone;
 using ReactiveUI;
 
 namespace DronZone_UWP.Presentation.Views.Area

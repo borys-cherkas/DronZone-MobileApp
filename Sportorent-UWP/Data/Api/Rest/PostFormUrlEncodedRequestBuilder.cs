@@ -3,6 +3,7 @@ using Sportorent_UWP.Business.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
+using DronZone_UWP.Business.Services;
 
 namespace DronZone_UWP.Data.Api.Rest
 {

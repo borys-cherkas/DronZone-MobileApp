@@ -38,6 +38,23 @@ namespace DronZone_UWP.Business.Services.Implementations
             return default(T);
         }
 
+        protected async Task ExecuteSafeApiRequestAsync(Func<Task> action)
+        {
+            try
+            {
+                await action();
+            }
+            catch (ApiUnauthorizedException)
+            {
+                await ShowErrorAsync("You have been unauthorized. Please, login again.");
+                _menuNavigationHelper.NavigateToLoginPage();
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorAsync(ex.Message);
+            }
+        }
+
         protected async Task ShowErrorAsync(string message)
         {
             _contentDialog.Title = "Error";
