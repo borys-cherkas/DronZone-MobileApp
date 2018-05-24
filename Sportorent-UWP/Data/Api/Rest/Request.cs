@@ -53,6 +53,12 @@ namespace DronZone_UWP.Data.Api.Rest
         {
             if (!response.IsSuccessStatusCode)
             {
+                var if401 = response?.RequestMessage?.RequestUri?.ToString()?.Contains("Account/Login?ReturnUrl");
+                if (if401.HasValue && if401.Value)
+                {
+                    throw new ApiUnauthorizedException();
+                }
+
                 throw new ApiException(response.ReasonPhrase);
             }
 

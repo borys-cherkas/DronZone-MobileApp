@@ -22,6 +22,15 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
             _areaService = areaService;
             _menuNavigationHelper = menuNavigationHelper;
 
+            AreaList = new ReactiveList<AreaDetailedModel>();
+
+            this.ObservableForProperty(x => x.SelectedArea)
+                .Where(x => x.Value != null)
+                .Subscribe(args =>
+                {
+                    GoToAreaDetails();
+                });
+
             Init();
         }
 
@@ -36,27 +45,15 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
             get => _selectedArea;
             set => this.RaiseAndSetIfChanged(ref _selectedArea, value);
         }
-
-        private static IDisposable _disposable;
+        
         private async void Init()
         {
-            _disposable?.Dispose();
-            _disposable = this.ObservableForProperty(x => x.SelectedArea)
-                .Where(x => x.Value != null)
-                .Subscribe(args =>
-                {
-                    _disposable?.Dispose();
-                    GoToAreaDetails();
-                });
-
-            AreaList = new ReactiveList<AreaDetailedModel>();
-
             await LoadAreasAsync();
         }
 
         private void GoToAreaDetails()
         {
-            _menuNavigationHelper.NavigateTo(typeof(AreaDetailsPage), SelectedArea);
+            _menuNavigationHelper.NavigateTo(typeof(AreaDetailsPage), SelectedArea?.Id);
         }
 
         private async Task LoadAreasAsync()
@@ -68,7 +65,11 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
                 var areas = await _areaService.GetCurrentUserAreasAsync();
 
                 AreaList.Clear();
-                AreaList.AddRange(areas);
+
+                if (areas != null)
+                {
+                    AreaList.AddRange(areas);
+                }
             }
             catch (Exception ex)
             {

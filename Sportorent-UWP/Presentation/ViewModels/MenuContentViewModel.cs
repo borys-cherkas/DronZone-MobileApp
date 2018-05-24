@@ -17,6 +17,7 @@ namespace DronZone_UWP.Presentation.ViewModels
     public class MenuContentViewModel : ViewModelBase
     {
         private readonly IPreferencesService _preferencesService;
+        private readonly MenuNavigationHelper _menuNavigationHelper;
         
         private bool _isPaneOpened;
         private MenuItemViewModel _selectedMenuItem;
@@ -27,6 +28,7 @@ namespace DronZone_UWP.Presentation.ViewModels
             MenuNavigationHelper menuNavigationHelper)
         {
             _preferencesService = preferencesService;
+            _menuNavigationHelper = menuNavigationHelper;
 
             OpenClosePaneCommand = ReactiveCommand.Create(OpenClosePaneCommandExecuted);
 
@@ -68,7 +70,7 @@ namespace DronZone_UWP.Presentation.ViewModels
 
         public void OnSelectedMenuItemChanged(MenuItemViewModel item)
         {
-            OnSelectedMenuItemChangedInternal(item.PageType);
+            _menuNavigationHelper.NavigateTo(item.PageType);
             IsPaneOpened = false;
         }
 

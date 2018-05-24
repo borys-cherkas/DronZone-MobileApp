@@ -108,6 +108,7 @@
     <Compile Include="Business\Services\INetworkService.cs" />
     <Compile Include="Business\Services\IPreferencesService.cs" />
     <Compile Include="Constants\RolesConstants.cs" />
+    <Compile Include="Data\Api\ApiUnauthorizedException.cs" />
     <Compile Include="Data\Api\ApiException.cs" />
     <Compile Include="Data\Api\ApiRouting.cs" />
     <Compile Include="Data\Api\APIs\IBillingRestApi.cs" />
@@ -132,6 +133,8 @@
     <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Infrastructure\AutofacRegistrator.cs" />
     <Compile Include="Models\Area\AreaDetailedModel.cs" />
+    <Compile Include="Models\Area\MapRectangle.cs" />
+    <Compile Include="Models\Area\ZoneSettings.cs" />
     <Compile Include="Models\AthleticField\AthleticFieldListItemModel.cs" />
     <Compile Include="Models\AthleticField\AthleticFieldListModel.cs" />
     <Compile Include="Models\Auth\LoginModel.cs" />

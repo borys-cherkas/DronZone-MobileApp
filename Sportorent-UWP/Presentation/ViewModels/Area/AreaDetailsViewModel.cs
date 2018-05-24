@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using DronZone_UWP.Business.Services;
 using DronZone_UWP.Models.Area;
 using ReactiveUI;
@@ -31,7 +32,32 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
         public AreaDetailedModel Area
         {
             get => _areaDetailedModel;
-            set => this.RaiseAndSetIfChanged(ref _areaDetailedModel, value);
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _areaDetailedModel, value);
+                this.RaisePropertyChanged(nameof(MapCenter));
+            }
+        }
+
+        public Geopoint MapCenter
+        {
+            get
+            {
+                if (Area != null)
+                {
+                    var map = Area.MapRectangle;
+                    var centerLatitude = (map.North + map.South) / 2;
+                    var centerLongitude = (map.East + map.West) / 2;
+
+                    return new Geopoint(new BasicGeoposition()
+                    {
+                        Latitude = centerLatitude,
+                        Longitude = centerLongitude
+                    });
+                }
+
+                return new Geopoint(new BasicGeoposition());
+            }
         }
 
         public ReactiveCommand GoToFiltersCommand
@@ -51,8 +77,8 @@ namespace DronZone_UWP.Presentation.ViewModels.Area
 
             try
             {
-                Area = MenuContentViewModel.Param as AreaDetailedModel;
-                //Area = await _areaService.GetDetailedAreaAsync(reservationListItem.Id);
+                var areaId = MenuContentViewModel.Param as string;
+                Area = await _areaService.GetDetailedAreaAsync(areaId);
             }
             catch (Exception ex)
             {

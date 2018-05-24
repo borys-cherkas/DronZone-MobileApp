@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using Autofac;
+using DronZone_UWP.Data.Api;
+using DronZone_UWP.Utils;
 using Sportorent_UWP.Models;
 
 namespace DronZone_UWP.Business.Services.Implementations
@@ -8,21 +11,31 @@ namespace DronZone_UWP.Business.Services.Implementations
     public abstract class ServiceBase
     {
         private readonly ContentDialog _contentDialog;
+        private readonly MenuNavigationHelper _menuNavigationHelper;
 
         protected ServiceBase()
         {
             _contentDialog = new ContentDialog();
+            _menuNavigationHelper = App.Container.Resolve<MenuNavigationHelper>();
         }
 
-        protected async Task<bool> CheckResponseAsync(ResponseWrapper response)
+        protected async Task<T> ExecuteSafeApiRequestAsync<T>(Func<Task<T>> func)
         {
-            if (!response.IsValid)
+            try
             {
-                await ShowErrorAsync(response.ErrorMessage);
-                return false;
+                return await func();
+            }
+            catch (ApiUnauthorizedException)
+            {
+                await ShowErrorAsync("You have been unauthorized. Please, login again.");
+                _menuNavigationHelper.NavigateToLoginPage();
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorAsync(ex.Message);
             }
 
-            return true;
+            return default(T);
         }
 
         protected async Task ShowErrorAsync(string message)

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DronZone_UWP.Data.Api.APIs;
-using DronZone_UWP.Models.AthleticField;
 using DronZone_UWP.Presentation.ViewModels.Drone;
 
 namespace DronZone_UWP.Business.Services.Implementations
@@ -17,14 +16,14 @@ namespace DronZone_UWP.Business.Services.Implementations
 
         public async Task<ICollection<UserDroneListViewModel>> GetUserDronesAsync()
         {
-            var response = await _droneRestApi.GetUserDronesAsync();
-            return response;
+            return await ExecuteSafeApiRequestAsync(
+                async () => await _droneRestApi.GetUserDronesAsync());
         }
 
         public async Task<UserDroneListViewModel> GetDetailedDroneAsync(string droneId)
         {
-            var response = await _droneRestApi.GetDetailedDroneAsync(droneId);
-            return response;
+            return await ExecuteSafeApiRequestAsync(
+                async () => await _droneRestApi.GetDetailedDroneAsync(droneId));
         }
     }
 }

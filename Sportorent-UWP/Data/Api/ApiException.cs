@@ -2,14 +2,7 @@
 
 namespace DronZone_UWP.Data.Api
 {
-    public class ApiException : Exception
+    public class ApiUnauthorizedException : ApiException
     {
-        public ApiException()
-        {
-        }
-
-        public ApiException(string message) : base(message)
-        {
-        }
     }
 }
