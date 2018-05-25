@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DronZone_UWP.Data.Api.Rest;
-using DronZone_UWP.Presentation.ViewModels.Drone;
+using DronZone_UWP.Models.Drone;
 
 namespace DronZone_UWP.Data.Api.APIs.Implementations
 {
@@ -13,16 +13,16 @@ namespace DronZone_UWP.Data.Api.APIs.Implementations
 
         public DroneRestApi() : base(new Uri(BaseApiAddress)) { }
 
-        public Task<ICollection<UserDroneListViewModel>> GetUserDronesAsync()
+        public Task<ICollection<DroneDetailedModel>> GetUserDronesAsync()
         {
             return Url($"{ControllerPath}/GetUserDrones")
-                .GetAsync<ICollection<UserDroneListViewModel>>();
+                .GetAsync<ICollection<DroneDetailedModel>>();
         }
 
-        public Task<UserDroneListViewModel> GetDetailedDroneAsync(string droneId)
+        public Task<DroneDetailedModel> GetDetailedDroneAsync(string droneId)
         {
             return Url($"{ControllerPath}/GetById/{droneId}")
-                .GetAsync<UserDroneListViewModel>();
+                .GetAsync<DroneDetailedModel>();
         }
 
         public Task AttachDroneAsync(string code)

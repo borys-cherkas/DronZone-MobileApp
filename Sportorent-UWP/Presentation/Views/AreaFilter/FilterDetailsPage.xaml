@@ -23,42 +23,41 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Column="1" Grid.Row="1">
-                    <StackPanel >
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="GoBackToAreaDetailsButton" Padding="20" Margin="15">
+                                Go Back To Area Details
+                            </Button>
+                            <Button x:Name="GoToFilterListButton" Padding="20" Margin="15">
+                                Go Back To Filter List
+                            </Button>
+                        </StackPanel>
+
                         <TextBlock FontSize="34">
-                            Your Areas
+                            Area Filter Details
                         </TextBlock>
 
-
                         <StackPanel Padding="20" Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Drone Type: " FontWeight="Bold" FontSize="18"/>
                                     <TextBlock x:Name="DroneTypeTextBlock" FontSize="22"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Drone Carrying Capacity: " FontWeight="Bold" FontSize="18" />
                                     <TextBlock x:Name="MaxAvailableWeigthTextBlock" FontSize="22"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Max Drone Weigth: " FontWeight="Bold" FontSize="18" />
                                     <TextBlock x:Name="MaxDroneWeigthTextBlock" FontSize="22" />
                                 </StackPanel>
 
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Max Drone Speed: " FontWeight="Bold" FontSize="18" />
                                     <TextBlock x:Name="MaxDroneSpeedTextBlock" FontSize="22" />
                                 </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="GoBackToAreaDetailsButton" Padding="20" Margin="15">
-                                    Go Back To Area Details
-                                </Button>
-                                <Button x:Name="GoToFilterListButton" Padding="20" Margin="15">
-                                    Go Back To Filter List
-                                </Button>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
