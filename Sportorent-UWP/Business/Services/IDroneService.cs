@@ -9,5 +9,7 @@ namespace DronZone_UWP.Business.Services
         Task<ICollection<UserDroneListViewModel>> GetUserDronesAsync();
 
         Task<UserDroneListViewModel> GetDetailedDroneAsync(string droneId);
+
+        Task AttachDroneAsync(string code);
     }
 }

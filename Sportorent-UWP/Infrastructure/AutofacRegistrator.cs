@@ -31,6 +31,7 @@ namespace DronZone_UWP.Infrastructure
             
             builder.RegisterType<UserDroneListViewModel>().AsSelf().AsImplementedInterfaces();
             builder.RegisterType<DroneDetailsViewModel>().AsSelf().AsImplementedInterfaces();
+            builder.RegisterType<AttachDroneViewModel>().AsSelf().AsImplementedInterfaces();
 
             builder.RegisterType<AddFilterViewModel>().AsSelf().AsImplementedInterfaces();
             builder.RegisterType<FilterListViewModel>().AsSelf().AsImplementedInterfaces();

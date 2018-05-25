@@ -24,5 +24,13 @@ namespace DronZone_UWP.Data.Api.APIs.Implementations
             return Url($"{ControllerPath}/GetById/{droneId}")
                 .GetAsync<UserDroneListViewModel>();
         }
+
+        public Task AttachDroneAsync(string code)
+        {
+            return Url($"{ControllerPath}/registerByCode")
+                .FormUrlEncoded()
+                .Param("code", code)
+                .PostAsync<object>();
+        }
     }
 }

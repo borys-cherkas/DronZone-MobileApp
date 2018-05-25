@@ -148,6 +148,7 @@
     <Compile Include="Presentation\ViewModels\Auth\LoginViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Auth\RegistrationViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Area\UserAreasListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Drone\AttachDroneViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Drone\DroneDetailsViewModel.cs" />
     <Compile Include="Presentation\ViewModels\Drone\UserDroneListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MenuContentViewModel.cs" />
@@ -190,6 +191,9 @@
     </Compile>
     <Compile Include="Presentation\Views\Drones\DroneListItemControl.xaml.cs">
       <DependentUpon>DroneListItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\Drones\AttachDronePage.xaml.cs">
+      <DependentUpon>AttachDronePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\Drones\UserDronesListPage.xaml.cs">
       <DependentUpon>UserDronesListPage.xaml</DependentUpon>
@@ -297,6 +301,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Presentation\Views\Drones\DroneListItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\Views\Drones\AttachDronePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

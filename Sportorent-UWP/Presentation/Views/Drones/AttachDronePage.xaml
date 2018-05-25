@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="DronZone_UWP.Presentation.Views.Drones.AttachDronePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:preloader="using:DronZone_UWP.Presentation.Views.Preloader"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Column="1" Grid.Row="1">
+                <StackPanel >
+                    <TextBlock FontSize="34">
+                        Attach Drone
+                    </TextBlock>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontWeight="Bold" FontSize="18">Enter Code:</TextBlock>
+                        <TextBox x:Name="DroneCodeTextBox"/>
+                    </StackPanel>
+
+                    <Button x:Name="AttachDroneButton" 
+                            FontWeight="Bold" FontSize="18">Save</Button>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <controls:Loading x:Name="Preloader"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <preloader:PreloaderContent />
+        </controls:Loading>
+    </Grid>
+</Page>

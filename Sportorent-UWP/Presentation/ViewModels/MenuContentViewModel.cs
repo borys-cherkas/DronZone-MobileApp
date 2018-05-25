@@ -115,6 +115,12 @@ namespace DronZone_UWP.Presentation.ViewModels
                     Icon = "\xE728",
                     PageType = typeof(UserDronesListPage)
                 });
+                MenuItems.Add(new MenuItemViewModel
+                {
+                    DisplayName = "Attach Drone",
+                    Icon = "\xE728",
+                    PageType = typeof(AttachDronePage)
+                });
             }
 
             if (userRole == RolesConstants.Administrator)

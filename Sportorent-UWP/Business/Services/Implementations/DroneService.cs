@@ -25,5 +25,11 @@ namespace DronZone_UWP.Business.Services.Implementations
             return await ExecuteSafeApiRequestAsync(
                 async () => await _droneRestApi.GetDetailedDroneAsync(droneId));
         }
+
+        public async Task AttachDroneAsync(string code)
+        {
+            await ExecuteSafeApiRequestAsync(
+                async () => await _droneRestApi.AttachDroneAsync(code));
+        }
     }
 }
