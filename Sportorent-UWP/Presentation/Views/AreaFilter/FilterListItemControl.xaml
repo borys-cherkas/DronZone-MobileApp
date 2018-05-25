@@ -17,21 +17,6 @@
                 <TextBlock Text="Drone Type: " FontWeight="Bold" FontSize="18"/>
                 <TextBlock Text="{Binding DroneTypePresentation}" FontSize="22"/>
             </StackPanel>
-
-            <!--<StackPanel Orientation="Vertical">
-                <TextBlock Text="Drone Carrying Capacity: " FontWeight="Bold"/>
-                <TextBlock Text="{Binding MaxAvailableWeigth}"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Max Drone Weigth: " FontWeight="Bold"/>
-                <TextBlock Text="{Binding MaxDroneWeigth}"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Max Drone Speed: " FontWeight="Bold"/>
-                <TextBlock Text="{Binding MaxDroneSpeed}"/>
-            </StackPanel>-->
         </StackPanel>
     </Grid>
 </Page>

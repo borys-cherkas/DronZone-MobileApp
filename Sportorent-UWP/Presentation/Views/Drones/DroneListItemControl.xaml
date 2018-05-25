@@ -12,10 +12,12 @@
           Padding="15"
           Background="Bisque" >
 
-        <!--<TextBlock x:Name="DroneName" 
-                   Text="{Binding Name}" 
-                   VerticalAlignment="Center"
-                   FontSize="24" />-->
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Code: " FontWeight="Bold" FontSize="18"/>
+                <TextBlock Text="{Binding Code}" FontSize="22"/>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
 </Page>
