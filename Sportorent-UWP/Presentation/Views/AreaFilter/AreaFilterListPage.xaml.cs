@@ -27,7 +27,7 @@ namespace DronZone_UWP.Presentation.Views.AreaFilter
             d(this.OneWayBind(ViewModel, vm => vm.IsBusy, v => v.Preloader.IsLoading));
 
             d(this.OneWayBind(ViewModel, vm => vm.AreaFilterList, v => v.FilterListView.ItemsSource));
-            d(this.OneWayBind(ViewModel, vm => vm.SelectedFilter, v => v.FilterListView.SelectedItem));
+            d(this.Bind(ViewModel, vm => vm.SelectedFilter, v => v.FilterListView.SelectedItem));
 
             d(this.BindCommand(ViewModel, vm => vm.GoToAddFilterPageCommand, v => v.AddNewFitlerButton));
             d(this.BindCommand(ViewModel, vm => vm.GoBackToAreaDetailsCommand, v => v.GoToAreaDetailsButton));

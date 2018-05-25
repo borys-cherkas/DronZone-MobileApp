@@ -23,7 +23,7 @@ namespace DronZone_UWP.Presentation.ViewModels.AreaFilters
             _areaFilterService = areaFilterService;
             _menuNavigationHelper = menuNavigationHelper;
 
-            _filterId = (int)MenuContentViewModel.Param ;
+            _filterId = Convert.ToInt32(MenuContentViewModel.Param);
 
             GoBackToFilterListCommand = ReactiveCommand.CreateFromTask(async () => GoToFilterListExecuted());
             GoBackToAreaDetailsCommand = ReactiveCommand.CreateFromTask(async () => GoBackToAreaDetailsExecuted());
