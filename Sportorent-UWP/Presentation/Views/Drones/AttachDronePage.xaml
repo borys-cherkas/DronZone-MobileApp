@@ -22,17 +22,20 @@
             </Grid.RowDefinitions>
 
             <ScrollViewer Grid.Column="1" Grid.Row="1">
-                <StackPanel >
+                <StackPanel Padding="50">
                     <TextBlock FontSize="34">
                         Attach Drone
                     </TextBlock>
 
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Margin="50">
                         <TextBlock FontWeight="Bold" FontSize="18">Enter Code:</TextBlock>
-                        <TextBox x:Name="DroneCodeTextBox"/>
+                        <TextBox x:Name="DroneCodeTextBox" FontSize="24"/>
                     </StackPanel>
 
                     <Button x:Name="AttachDroneButton" 
+                            Margin="50,0,50,50"
+                            Padding="80,30"
+                            HorizontalAlignment="Center"
                             FontWeight="Bold" FontSize="18">Save</Button>
                 </StackPanel>
             </ScrollViewer>

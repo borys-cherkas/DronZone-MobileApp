@@ -49,6 +49,17 @@ namespace DronZone_UWP.Business.Services.Implementations
                 await ShowErrorAsync("You have been unauthorized. Please, login again.");
                 _menuNavigationHelper.NavigateToLoginPage();
             }
+            catch (ApiException ex)
+            {
+                if (ex.Message == "Bad Request")
+                {
+                    throw;
+                }
+                else
+                {
+                    await ShowErrorAsync(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
                 await ShowErrorAsync(ex.Message);

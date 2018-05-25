@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DronZone_UWP.Business.Services;
+using DronZone_UWP.Data.Api;
+using DronZone_UWP.Presentation.Views.Drones;
 using DronZone_UWP.Utils;
 using ReactiveUI;
 
@@ -43,7 +45,11 @@ namespace DronZone_UWP.Presentation.ViewModels.Drone
             try
             {
                 await _droneService.AttachDroneAsync(Code);
-                _menuNavigationHelper.NavigateTo(typeof(UserDroneListViewModel));
+                _menuNavigationHelper.NavigateTo(typeof(UserDronesListPage));
+            }
+            catch (ApiException ex)
+            {
+                await ShowErrorAsync("Incorrect drone code. Enter valid one.");
             }
             catch (Exception ex)
             {
