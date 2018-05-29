@@ -6,10 +6,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Width="350"
+    <Grid Width="250"
           Height="100"
           BorderBrush="CadetBlue" BorderThickness="2" 
           Padding="15"
+          Margin="10"
           Background="Bisque" >
 
         <StackPanel Orientation="Horizontal">

@@ -38,7 +38,7 @@
                     </TextBlock>
 
                     <ListView x:Name="DroneListView"
-                              SelectionMode="Single"
+                              SelectionMode="None"
                               ItemTemplate="{StaticResource DroneListItemControl}" />
                 </StackPanel>
             </ScrollViewer>

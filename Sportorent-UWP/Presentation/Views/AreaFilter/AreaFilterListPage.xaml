@@ -31,12 +31,12 @@
 
             <ScrollViewer Grid.Column="1" Grid.Row="1">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="GoToAreaDetailsButton" Padding="15" Margin="15">
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="GoToAreaDetailsButton" Padding="15" Margin="15" HorizontalAlignment="Stretch">
                             Go Back To Area Details
                         </Button>
 
-                        <Button x:Name="AddNewFitlerButton" Padding="15" Margin="15">
+                        <Button x:Name="AddNewFitlerButton" Padding="15" Margin="15" HorizontalAlignment="Stretch">
                             Add Filter
                         </Button>
                     </StackPanel>

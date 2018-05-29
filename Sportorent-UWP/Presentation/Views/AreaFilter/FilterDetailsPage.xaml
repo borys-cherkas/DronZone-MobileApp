@@ -24,11 +24,11 @@
 
                 <ScrollViewer Grid.Column="1" Grid.Row="1">
                     <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Button x:Name="GoBackToAreaDetailsButton" Padding="20" Margin="15">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Name="GoBackToAreaDetailsButton" Padding="0,20" Margin="0,10" HorizontalAlignment="Stretch">
                                 Go Back To Area Details
                             </Button>
-                            <Button x:Name="GoToFilterListButton" Padding="20" Margin="15">
+                            <Button x:Name="GoToFilterListButton" Padding="0,20" Margin="0,10" HorizontalAlignment="Stretch">
                                 Go Back To Filter List
                             </Button>
                         </StackPanel>
