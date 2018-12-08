@@ -27,8 +27,6 @@ namespace DronZone_UWP.Data.Api.APIs.Implementations
             return Url("connect/token")
                 .FormUrlEncoded()
                 .Param("grant_type", "password")
-                .Param("client_id", "mvc")
-                .Param("client_secret", "901564A5-E7FE-42CB-B10D-61EF6A8F3654")
                 .Param(nameof(username), username)
                 .Param(nameof(password), password)
                 .PostAsync<GetTokenModel>();
